@@ -1,0 +1,33 @@
+{% extends "layout.html" %} {% block content %}
+
+<div class="page-header">
+    <h1>Kaisinator!</h1>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <img class="profilePic" src="http://cultofthepartyparrot.com/parrots/hd/shuffleparrot.gif"><br>
+        <b>Kaisin Li</b><br> 100m followers <br><br> 
+        {% if showForm %}
+        <form action="/tweets" method="POST">
+            <label for="name_field">Name:</label>
+            <input name="name" type="text" id="name_field" value="{{username}}" style="width: 250px;"/>
+            <label for="text_field">Text:</label>
+            <input name="text" type="text" id="text_field" style="width: 250px;" />
+            <br><br>
+            <input type="submit" value="Submit" />
+            </form>
+        {% endif %}
+    </div>
+<div class="col-md-9">
+
+    {% for tweet in tweets %}
+    <li><img class="profilePic" src="https://i.ytimg.com/vi/b6dT4kyVUuY/maxresdefault.jpg"> <a href="/users/{{tweet.name}}">{{tweet.name}}</a>
+        <br> {{tweet.content}}<br><br></li>
+    {% endfor %}
+
+</div>
+</div>
+
+
+
+{% endblock %}
